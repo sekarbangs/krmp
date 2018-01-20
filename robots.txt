@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /
+
+Sitemap: http://www.kannadaremix.in/sitemap.xml
+Sitemap: http://www.kannadaremix.in/sitemap1.xml
