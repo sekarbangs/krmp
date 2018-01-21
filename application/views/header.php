@@ -46,7 +46,7 @@
       <li><a href="<?=base_url().index_page();?>/songs/s_home/index/2">Kannada DJ Albums</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><button id="togglePlayerBtn" onClick="processView.handlePlayer();" class="btn btn-circle btn-lg btn-secondary">
+      <li><button id="togglePlayerBtn" onClick="processView.playerHandler();" class="btn btn-circle btn-lg btn-secondary">
               <span class="fa fa-pause" aria-hidden="true"></span></button></li>
       <li>&emsp;</li>
       <li>&emsp;</li>

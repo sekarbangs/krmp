@@ -31,14 +31,16 @@ var processView={
 	timeoutFunc : '',
 	init : function(){
 			var tS=document.createElement('script');tS.innerHTML='$(\'a\').click(function(e){e.preventDefault();processView.getView(this.href);});';
-			document.body.prepend(tS);
+			document.body.appendChild(tS);
 			aab();
 			var reqURI = $('requesteduri').html();
 			if(reqURI.length > 0)alert(reqURI);
 			processView.resetAdBlock();
 	},
-	getSongUrl 	: 	function(a=null){
+	getSongUrl 	: 	function(a){
 		processView.reqSongId=a;
+		//processView.songSrc = [];
+		processView.songSrc[processView.reqSongId] = [];
 		processView.songLength=0;
 		processView.totalDuration = 0;
 		clearTimeout(processView.timeoutFunc);
@@ -70,7 +72,7 @@ var processView={
 			});
 		}
 	},
-	actionPlayer : 	function(a=null,b=null,c=null,d=null,e=null){
+	actionPlayer : 	function(a,b,c,d,e){
 		processView.playSong.title = c.toUpperCase().replace(/ /g,'_');
 		processView.playSong.mp3 = atob(a);
 		processView.playSong.poster='http:\/\/'+document.domain+'\/images\/albums\/'+d+'\/a_art.jpg';
@@ -85,7 +87,7 @@ var processView={
 				if(a.status==true&&b=='success'){
 					(processView.audioCtx)?processView.audioCtx.close():'';
 					processView.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-					processView.audioCtx.onstatechange = processView.handlePlayer();
+					processView.audioCtx.onstatechange = processView.playerHandler();
 					processView.updateSongBuffer();
 				}
 				else
@@ -96,8 +98,6 @@ var processView={
 		});	
 	},
 	updateSongBuffer 	: function(){
-		
-		if(processView.songSrc.length < 1)processView.songSrc = new Array();
 		var request = new XMLHttpRequest();
 		processView.songLength++;
 		request.open('GET', processView.playSong.mp3+'/'+processView.songLength, true);
@@ -112,48 +112,43 @@ var processView={
 
 			var audioData = request.response;
 			var songSrc = processView.audioCtx.createBufferSource();
-			//processView.songSrc[processView.songLength] = processView.audioCtx.createBufferSource();
 			processView.audioCtx.decodeAudioData(audioData).then(function(buffer) {				
-			    //processView.songSrc[processView.songLength].buffer = buffer;
 			    songSrc.buffer = buffer;
-			    
-			    //processView.songSrc[processView.songLength].connect(processView.audioCtx.destination);
-			    processView.songSrc[processView.songLength] = songSrc;
-			    songSrc.connect(processView.audioCtx.destination);
-			
-			    if(processView.songSrc[processView.songLength]-1){
-			    	processView.totalDuration += (processView.songSrc[(processView.songLength-1)].buffer.duration-0.0050);
+			    processView.songSrc[processView.reqSongId][processView.songLength] = songSrc;
+			    processView.songSrc[processView.reqSongId][processView.songLength].connect(processView.audioCtx.destination);
+			    if(processView.songSrc[processView.reqSongId].length > 2){
+			     	processView.totalDuration += (processView.songSrc[processView.reqSongId][(processView.songLength-1)].buffer.duration)-0.0250;
 				}
 				else
 				{
 					processView.totalDuration += processView.audioCtx.currentTime;
 				}
 
-			   	processView.songSrc[processView.songLength].start(processView.totalDuration);
+			   	processView.songSrc[processView.reqSongId][processView.songLength].start(processView.totalDuration);
 				processView.timeoutFunc = setTimeout('processView.updateSongBuffer()',2000);		
 		  	},
 		  	function(e){ console.log("Error with decoding audio data ...");console.log(e);});
 		 }
 		 request.send();
 	},
-	handlePlayer 	: function(){
-		console.log('AudioCtx is '+processView.audioCtx.state);
-		/*if($('#togglePlayerBtn').attr('state')=='playing'){
+	playerHandler 	: function(){
+		
+		if($('#togglePlayerBtn').attr('state')=='playing'){
 			processView.audioCtx.suspend();
 			$('#togglePlayerBtn').attr('state','suspended');
-			$('#togglePlayerBtn > span').removeClass('fa-pause').addClass('fa-play')
+			$('#togglePlayerBtn > span').removeClass('fa-pause').addClass('fa-play');
 		}
 		
 		else if($('#togglePlayerBtn').attr('state')=='suspended'){
 			processView.audioCtx.resume(processView.audioCtx.currentTime);
 			$('#togglePlayerBtn').attr('state','playing');
-			$('#togglePlayerBtn > span').removeClass('fa-play').addClass('fa-pause')
+			$('#togglePlayerBtn > span').removeClass('fa-play').addClass('fa-pause');
 		}
 		else if($('#togglePlayerBtn').attr('state')=='idle'){
 			if(processView.audioCtx.state=='suspended'){
 				processView.audioCtx.resume(processView.audioCtx.currentTime);
 				$('#togglePlayerBtn').attr('state','playing');
-				$('#togglePlayerBtn > span').removeClass('fa-play').addClass('fa-pause')
+				$('#togglePlayerBtn > span').removeClass('fa-play').addClass('fa-pause');
 			}
 			else if(processView.audioCtx.state=='closed'){
 				processView.getSongUrl(processView.reqSongId);
@@ -162,10 +157,9 @@ var processView={
 		else 
 		{
 			$('#togglePlayerBtn').attr('state','playing').html('<span class="fa fa-pause" aria-hidden="true"></span>');
-		}*/
+		}
 	},
 	getView		: function(aE){
-		console.log('Requested URI = '+ aE);
 
 		var aR=aE.toString().split('/');
 
@@ -200,3 +194,6 @@ var processView={
 		setTimeout('processView.resetAdBlock()',15000);*/
 	}
 };
+function lg(txt){
+	console.log(txt);
+}

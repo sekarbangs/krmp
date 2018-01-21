@@ -47,7 +47,7 @@ a{color:green;}
 
 #radiowraper .track {
   position: relative;
-  width: 90%;
+  width: 75%;
   margin: 7px 0 0 16px;
   height: 10px;
   border: 1px solid #666;
@@ -79,6 +79,25 @@ a{color:green;}
   cursor: pointer;
   box-shadow: 0 0 5px #000, inset 0 0 4px #400;
 }
+
+#radiowraper .intro {
+  position: absolute;
+  display: inline-block;
+  width:25%;
+}
+
+#radiowraper .intro .title {
+  color:yellow;
+  font-size: 0.85em;
+  font-weight: 900;
+  margin-top:-5px;
+}
+
+#radiowraper .intro .artist {
+  color: #ababab;
+  font-size: 0.70em;
+}
+
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;

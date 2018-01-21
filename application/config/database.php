@@ -8,11 +8,11 @@ $db['default'] = array(
 
 	'hostname' => 'localhost',
 
-	'username' => 'iafschoo_krmp',
+	'username' => 'kannada_remix',
 
 	'password' => 'Sunithak@123',
 
-	'database' => 'iafschoo_e10734',
+	'database' => 'kannada_remix',
 
 	'dbdriver' => 'mysqli',
 
