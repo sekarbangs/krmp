@@ -35,6 +35,8 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/krmp.styling.css">
 </head>
 <body style="padding-top: 70px;max-height:100vh;">
+
+<?php if(!$this->mobiledetect->isMobile()){?>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header" style="min-width:300px;background:url(/images/logo-sm.png) no-repeat center left;background-size:contain;">
@@ -55,4 +57,30 @@
     </ul>
   </div>
 </nav>
+<?php }else{?>
+  <div class="row" style="width:100%;">
+      <img class="mob-back" src="/images/logo-sm.png" />
+  </div>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="z-index:1;">Kannada Remix Music Portal</a>
+    </div>
+      <ul class="nav navbar-nav">
+        <li><a href="<?=base_url().index_page();?>/welcome/home">Home</a></li>
+        <li><a href="<?=base_url().index_page();?>/songs/s_home/index/1">KRMP Weekend Bash</a></li>
+        <li><a href="<?=base_url().index_page();?>/songs/s_home/index/2">Kannada DJ Albums</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><button id="togglePlayerBtn" onClick="processView.playerHandler();" class="btn btn-circle btn-lg btn-secondary">
+                <span class="fa fa-pause" aria-hidden="true"></span></button></li>
+        <li>&emsp;</li>
+        <li>&emsp;</li>
+        <li>&emsp;</li>
+        <li>&emsp;</li>
+      </ul>
+    </div>
+  </nav>
+<?php }?>
 <div class="container" id="container"><!-- closes in footer.php -->

@@ -29,11 +29,11 @@
 
       <div class="col-lg-12 bg-faded">
         <!-- Album/Song Art -->
-        <div class="col-lg-2"> 
-          <div style="min-height:100px;text-align:left;width:100%;background: url(<?=base_url().$data[$i]['image'];?>) no-repeat;background-position:center center;background-size:contain;"></div>
+        <div class="col-lg-2 col-sm-2"> 
+          <div style="min-height:150px;text-align:left;width:100%;background: url(<?=base_url().$data[$i]['image'];?>) no-repeat;background-position:center center;background-size:contain;"></div>
         </div>
         <!-- end Album/Song Art -->
-        <div class="col-lg-6">
+        <div class="col-lg-6  col-sm-10">
           <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
@@ -52,6 +52,7 @@
   
   /******************** SONGS **********************/
     }elseif($type=='S'){
+      
       for($i=0;$i<count($listToDisplay_Left['songsInfo'][0]);$i++){
         $data[] = $listToDisplay_Left['songsInfo'][0][$i];
 ?>
@@ -69,6 +70,7 @@
           <div class="panel-heading">
             <h3 class="panel-title text-left"><strong><?=$data[$i]['name'];?></strong></h3>
           </div><!-- end panel-heading -->
+
           <div class="panel-body text-left">
             <!-- songs details -->
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-left"><small>

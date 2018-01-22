@@ -154,6 +154,16 @@ a{color:green;}
   animation: pace-spinner 400ms linear infinite;
 }
 
+
+.mob-back{
+  position: fixed;
+  max-width: 300px;
+  left: 10px;
+  top: 50px;
+  max-height: 300px;
+}
+
+
 @-webkit-keyframes pace-spinner {
   0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }

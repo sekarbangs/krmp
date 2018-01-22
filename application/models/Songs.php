@@ -206,7 +206,7 @@ class Songs extends CI_Model
     
     public function getAllSongsList($category, $album)
     {
-        $sql = " 	select a.*
+        $sql = " 	select a.*,b.*
 
 
 
