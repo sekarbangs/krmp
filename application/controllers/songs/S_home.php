@@ -238,7 +238,7 @@ class S_home extends CI_Controller {
 		ini_set('max_execution_time', 1800);
 		$refA = explode('/',$_SERVER['HTTP_REFERER']);
 		$path = './temp_path/'.$fileName.'/'.$fileName.'.mp3.'.str_pad($songPart, 3, "0", STR_PAD_LEFT);
-		if(strlen($fileName)==32 && ( in_array('127.0.0.1',$refA) || in_array('kannadaremix.com',$refA) || in_array('www.kannadaremix.com',$refA) )){ 
+		if(strlen($fileName)==32 && ( in_array('127.0.0.1',$refA) || in_array('kannadaremix.com',$refA) || in_array('www.kannadaremix.com',$refA) || in_array('dev.kannadaremix.com',$refA) )){ 
 			$mime_type = "audio/mpeg, audio/x-mpeg, audio/x-mpeg-3, audio/mpeg3";
 			if(file_exists($path)){
 			    header('Content-type: {$mime_type}');
