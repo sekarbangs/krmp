@@ -132,27 +132,29 @@ var processView={
 		 request.send();
 	},
 	playerHandler 	: function(){
-		
+		lg(processView.audioCtx.state);
 		if($('#togglePlayerBtn').attr('state')=='playing'){
-			if(processView.audioCtx.state=='playing')processView.audioCtx.suspend();
+			//lg(processView.audioCtx.state);
+			if(processView.audioCtx.state=='running')processView.audioCtx.suspend();
 			$('#togglePlayerBtn').attr('state','suspended');
-			$('#togglePlayerBtn > span').removeClass('fa-pause').addClass('fa-play');
+			$('#togglePlayerBtn').html('<span class="fa fa-play" aria-hidden="true"></span>');
 		}
 		
 		else if($('#togglePlayerBtn').attr('state')=='suspended'){
+			//lg(processView.audioCtx.state);
 			processView.audioCtx.resume(processView.audioCtx.currentTime);
 			$('#togglePlayerBtn').attr('state','playing');
-			$('#togglePlayerBtn > span').removeClass('fa-play').addClass('fa-pause');
+			$('#togglePlayerBtn').html('<span class="fa fa-pause" aria-hidden="true"></span>');
 		}
 		else if($('#togglePlayerBtn').attr('state')=='idle'){
 			if(processView.audioCtx.state=='suspended'){
 				processView.audioCtx.resume(processView.audioCtx.currentTime);
 				$('#togglePlayerBtn').attr('state','playing');
-				$('#togglePlayerBtn > span').removeClass('fa-play').addClass('fa-pause');
+				$('#togglePlayerBtn').html('<span class="fa fa-pause" aria-hidden="true"></span>');
 			}
 			else if(processView.audioCtx.state=='closed'){
 				$('#togglePlayerBtn').attr('state','idle');
-				$('#togglePlayerBtn > span').removeClass('fa-pause').removeClass('fa-play');
+				$('#togglePlayerBtn').html('<span class="fa fa-play" aria-hidden="true"></span>');
 				processView.getSongUrl(processView.reqSongId);
 			}
 		}
