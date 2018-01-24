@@ -189,7 +189,9 @@ var processView={
 					}
 				},
 				error	: 	function(c,b,a){
-					console.log(a);
+					lg(a);
+					lg(b);
+					lg(c);
 				}
 			});
 		}
