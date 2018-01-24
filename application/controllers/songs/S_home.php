@@ -156,8 +156,8 @@ class S_home extends CI_Controller {
 				if( ! is_dir($_SERVER['DOCUMENT_ROOT'].'/temp_path/'.md5(session_id().'-'.$id)) ){
 				//if( ! file_exists($_SERVER['DOCUMENT_ROOT'].$_SESSION['tempName']) ){
 					$qBuilt = http_build_query(array('export'=>'download','id'=>$this->songs->getSongUrl($id,true)));
-					//$songUrl = 'http://drive.google.com/uc?'. $qBuilt;
-					$songUrl = '1.mp3';
+					$songUrl = 'http://drive.google.com/uc?'. $qBuilt;
+					//$songUrl = '1.mp3';
 					$song = file_get_contents($songUrl);
 					$result = file_put_contents($_SERVER['DOCUMENT_ROOT'].$_SESSION['tempName'],$song);
 					if(file_exists($_SERVER['DOCUMENT_ROOT'].$_SESSION['tempName'])){
