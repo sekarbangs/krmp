@@ -4,6 +4,7 @@ class Welcome extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		error_reporting(0);
 		$this->load->library('browser');
 		if($this->browser->isRobot() === false && !in_array($this->browser->getBrowser(), array(Browser::BROWSER_FIREFOX,Browser::BROWSER_CHROME, Browser::BROWSER_IE) ) ){
 			show_error('<p>THIS BROWSER NOT SUPPORTED.</p><p>Currently our website supports only Mozilla Firefox, Google Chrome and MS Internet Explorer.</p>',501,'Ops !');
