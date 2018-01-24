@@ -130,6 +130,7 @@ var processView={
 		  	function(e){ /*console.log("Error with decoding audio data ...");console.log(e);*/});
 		 }
 		 request.send();
+		 lg(processView.songSrc);
 	},
 	playerHandler 	: function(){
 		if($('#togglePlayerBtn').attr('state')=='playing'){
