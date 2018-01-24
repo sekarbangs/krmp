@@ -4,19 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class S_home extends CI_Controller {
 
 	private function loadViews($data){
-		if($this->botDetected()){
+		/*if($this->botDetected()){
 			$this->load->vars($data);
 			$this->load->view('header');
 			$this->load->view('music/display');
 			$this->load->view('footer');
 		}
 		else
-		{
+		{*/
 			$this->load->vars($data);
 			$view['pageTitle'] 	=  $data['pageTitle'];
 			$view['resHtml'] 	=  $this->load->view('music/display','',true);
 			echo json_encode($view);
-		}
+		//}
 	}
 
 	private function botDetected() {
