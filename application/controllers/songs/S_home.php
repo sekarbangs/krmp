@@ -3,33 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class S_home extends CI_Controller {
 
-	private function loadViews($data){
-		/*if($this->botDetected()){
-			$this->load->vars($data);
-			$this->load->view('header');
-			$this->load->view('music/display');
-			$this->load->view('footer');
-		}
-		else
-		{*/
-			$this->load->vars($data);
-			$view['pageTitle'] 	=  $data['pageTitle'];
-			$view['resHtml'] 	=  $this->load->view('music/display','',true);
-			echo json_encode($view);
-		//}
-	}
-
-	private function botDetected() {
-	  $user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-	  $bot_identifiers = array('bot','slurp','crawler','spider','curl','facebook','fetch');
-	  foreach ($bot_identifiers as $identifier) {
-	    if (strpos($user_agent, $identifier) !== FALSE) {
-	      return TRUE;
-	    }
-	  }
-	  return FALSE;
-	}
-
 	public function index($category=NULL, $album=NULL){
 
 /*********************************************/
@@ -37,9 +10,7 @@ class S_home extends CI_Controller {
 //			for albums
 //
 /*********************************************/
-
-
-		if(isset($category) && empty($album)){
+		if(isset($category) && empty($album)){/*
 			
 			$data['albumsList'] = $this->songs->getAllAlbumsList($category);
 
@@ -64,8 +35,8 @@ class S_home extends CI_Controller {
 			$data['listToDisplay_Left'] = $this->songs->getAllAlbumsList($category);
 			
 			$data['allCategories'] = $this->songs->getAllCategories();
-			$this->loadViews($data);
-
+			$this->loadViews($data);*/
+			echo json_encode(array('status'=>'sssssssssssssssssssssssssssssss'));
 		}
 /*********************************************/
 //
@@ -291,6 +262,33 @@ class S_home extends CI_Controller {
 	
 		
 	}	
+
+	private function loadViews($data){
+		/*if($this->botDetected()){
+			$this->load->vars($data);
+			$this->load->view('header');
+			$this->load->view('music/display');
+			$this->load->view('footer');
+		}
+		else
+		{*/
+			$this->load->vars($data);
+			$view['pageTitle'] 	=  $data['pageTitle'];
+			$view['resHtml'] 	=  $this->load->view('music/display','',true);
+			echo json_encode($view);
+		//}
+	}
+
+	private function botDetected() {
+	  $user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+	  $bot_identifiers = array('bot','slurp','crawler','spider','curl','facebook','fetch');
+	  foreach ($bot_identifiers as $identifier) {
+	    if (strpos($user_agent, $identifier) !== FALSE) {
+	      return TRUE;
+	    }
+	  }
+	  return FALSE;
+	}
 }
 
 ?>
