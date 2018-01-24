@@ -172,10 +172,7 @@ var processView={
 				type	: 	'GET',
 				dataType : 	'JSON',
 				success	: 	function(a,b,c){
-					lg(a);
-					lg(b);
-					lg(c);
-					/*if(c.status==200&&b=='success'){
+					if(c.status==200&&b=='success'){
 						document.title=a.pageTitle;
 						history.pushState({urlPath:aE.href},"",aE.href)
 						$('#container').html(a.resHtml);
@@ -184,7 +181,7 @@ var processView={
 							history.replaceState({urlPath:aE.href},"",aE.href)
 			            });
 						$('#container a').click(function(e){e.preventDefault();processView.getView(this);});
-					}*/
+					}
 				},
 				error	: 	function(c,b,a){
 					lg(a);

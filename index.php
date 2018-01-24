@@ -10,11 +10,13 @@ if($_SERVER['REQUEST_URI']=='/' || $_SERVER['REQUEST_URI']=='/index.php/welcome'
 
 if($_SERVER['REQUEST_URI']!='/' 
 	&& (
+			in_array('kannadaremix.com',(isset($a)?$a:array()))
+			||
 			in_array('www.kannadaremix.com',(isset($a)?$a:array()))
 			||
 			in_array('127.0.0.1',(isset($a)?$a:array()))
 			||
-			in_array('krmp.iafschools.in',(isset($a)?$a:array()))
+			in_array('dev.kannadaremix.com',(isset($a)?$a:array()))
 		)
 ){
 	$proceed=true;
