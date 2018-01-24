@@ -206,34 +206,13 @@ class Songs extends CI_Model
     
     public function getAllSongsList($category, $album)
     {
-        $sql = " 	select a.*,b.*
+        $sql = " 	select a.*,b.name aname
+                    from songs a, albums b
+                    where a.album = b.id
+                    and b.category = " . $category . "
+                    and a.album = " . $album;
 
-
-
-					from songs a, albums b
-
-
-
-					where a.album = b.id
-
-
-
-					and b.category = " . $category . "
-
-
-
-					and a.album = " . $album;
-        
-        
-        
-        
-        
-        
-        
         $res = $this->db->query($sql);
-        
-        
-        
         $data['songsInfo'][] = $res->result_array();
         
         
