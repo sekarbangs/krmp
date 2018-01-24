@@ -132,16 +132,13 @@ var processView={
 		 request.send();
 	},
 	playerHandler 	: function(){
-		lg(processView.audioCtx.state);
 		if($('#togglePlayerBtn').attr('state')=='playing'){
-			//lg(processView.audioCtx.state);
 			if(processView.audioCtx.state=='running')processView.audioCtx.suspend();
 			$('#togglePlayerBtn').attr('state','suspended');
 			$('#togglePlayerBtn').html('<span class="fa fa-play" aria-hidden="true"></span>');
 		}
 		
 		else if($('#togglePlayerBtn').attr('state')=='suspended'){
-			//lg(processView.audioCtx.state);
 			processView.audioCtx.resume(processView.audioCtx.currentTime);
 			$('#togglePlayerBtn').attr('state','playing');
 			$('#togglePlayerBtn').html('<span class="fa fa-pause" aria-hidden="true"></span>');
