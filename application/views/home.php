@@ -4,7 +4,7 @@
 			<div class="page-header">
 				<h1>
 					<div class="row">
-					<div class="col-lg-4 col-sm-12">Remix is our Breath !</div><div class="col-lg-8 col-sm-12"> <small>Feel the rythm of Kannada Remix Songs by our own Kannada DJs</small></div>
+					<div class="col-lg-4 col-sm-12">Remix is ನಮ್ಮ ಉಸಿರು !</div><div class="col-lg-8 col-sm-12"> <small>Feel the rythm of Kannada Remix Songs by our own Kannada DJs</small></div>
 					</div>
 				</h1>
 			</div>
@@ -22,7 +22,7 @@
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 	</div>
-	<div style="width:80%;margin:0 auto;text-align: center;">
+	<div style="width:100%;margin:0 auto;text-align: center;">
 		<div class="banners_title" style="font-size:1.3em;padding:50px 0px 0px 0px;">SEARCH KANNADA REMIX PORTAL</div>
 		<script>
 		  (function() {

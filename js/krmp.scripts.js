@@ -134,7 +134,7 @@ var processView={
 	playerHandler 	: function(){
 		
 		if($('#togglePlayerBtn').attr('state')=='playing'){
-			processView.audioCtx.suspend();
+			if(processView.audioCtx.state=='playing')processView.audioCtx.suspend();
 			$('#togglePlayerBtn').attr('state','suspended');
 			$('#togglePlayerBtn > span').removeClass('fa-pause').addClass('fa-play');
 		}
@@ -151,6 +151,8 @@ var processView={
 				$('#togglePlayerBtn > span').removeClass('fa-play').addClass('fa-pause');
 			}
 			else if(processView.audioCtx.state=='closed'){
+				$('#togglePlayerBtn').attr('state','idle');
+				$('#togglePlayerBtn > span').removeClass('fa-pause').removeClass('fa-play');
 				processView.getSongUrl(processView.reqSongId);
 			}
 		}

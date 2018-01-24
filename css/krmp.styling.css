@@ -203,8 +203,8 @@ a{color:green;}
 @media only screen and (max-width : 480px) {
   .page-header h1{font-size:2em;text-align: center;font-weight: 900;}
   .stats-block{margin:20px auto;}
-  .stats-header{font-size:2em;text-align: center;}
-  .stats-content{font-size:1em;}
+  .stats-header{font-size:3em;text-align: center;}
+  .stats-content{font-size:2em;}
   .form-area{font-size:2em;display:block;padding:10px 5px;text-align: left;}
   .form-area .sub-form{padding: 10px;margin: 50px 0px;}
   .form-area .con-form{padding: 10px;margin: 50px 0px;}
@@ -227,8 +227,8 @@ a{color:green;}
 @media only screen and (min-device-width : 412px) and (max-device-width : 732px) {
   .page-header h1{font-size:3em;text-align: center;font-weight: 900;}
   .stats-block{margin:20px auto;}
-  .stats-header{font-size:2em;}
-  .stats-content{font-size:1em;}
+  .stats-header{font-size:3em;}
+  .stats-content{font-size:2em;}
   .form-area{font-size:1.2em;display:block;padding:10px 5px;text-align: left;}
   .form-area .sub-form{padding: 10px;margin: 50px 0px;}
   .form-area .con-form{padding: 10px;margin: 50px 0px;}

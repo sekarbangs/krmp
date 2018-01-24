@@ -1,12 +1,40 @@
 <?php
-//if($_POST['adminname'] == '919387' && $_POST['adminpassword'] == 'sunithak'){
 error_reporting(E_ALL);
+function updateSiteMap($file,$newId, $category, $album, $author){
+	$lines = "	<url>\n
+				<loc>http://www.kannadaremix.com/index.php/songs/s_home/index/$category/$newId</loc>\n
+				<changefreq>hourly</changefreq>\n
+				<image:image>\n
+				<image:loc>http://www.kannadaremix.com/images/albums/$newId/a_art.jpg</image:loc>\n
+				<image:title>".$album." ".$author." - Kannada Remix Music Portal</image:title>\n
+				<image:caption>".$album." ".$author." - Download Kannada Remix Songs, Listen Kannada Remix Songs online. Kannada Remix Music Portal</image:caption>\n
+				</image:image>\n
+		</url>\n
+	</urlset>\n";		
+	$reading = fopen($file, 'r');
+	$writing = fopen('sitemap.tmp', 'w');
+	$replaced = false;
+	while (!feof($reading)) {
+	  $line = fgets($reading);
+	  if (stristr($line,'</urlset>')) {
+	    $line = $lines;
+	    $replaced = true;
+	  }
+	  fputs($writing, $line);
+	}
+	fclose($reading); fclose($writing);
+	if ($replaced){
+	  rename('sitemap.tmp', $file);
+	} else {
+	  unlink('sitemap.tmp');
+	}
+}
 
 $host = 'localhost';
 
-$database = 'kannadar_remix';
+$database = 'kannada_remix';
 
-$username = 'kannadar_remix';
+$username = 'kannada_remix';
 
 $password = 'Sunithak@123';
 
@@ -105,8 +133,8 @@ if(isset($_POST))@extract($_POST);
 			}
 
 		}
-
-		if($done>0)$albMsg = '<font color="GREEN"><b>UPDATE SUCCESSFULL: $album </b></font>';else $albMsg = '<font color="RED"><b>UPDATE FAILED</b></font>';
+		updateSiteMap('sitemap.xml',$newId, $category, $album, $author);
+		if($done>0)$albMsg = "<font color='GREEN'><b>UPDATE SUCCESSFULL: $album </b></font>";else $albMsg = '<font color="RED"><b>UPDATE FAILED</b></font>';
 
 	}
 
@@ -127,7 +155,7 @@ if(isset($_POST))@extract($_POST);
 
 		if($done>0)$sngMsg = '<font color="GREEN"><b>UPDATE SUCCESSFULL: $album </b></font>';else $sngMsg = '<font color="RED"><b>UPDATE FAILED</b></font>';
 
-	}
+	}	
 
 ?>
 
